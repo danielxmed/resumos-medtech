@@ -66,6 +66,7 @@ files = [
     and f != script_file
     and not f.startswith('.')
     and f != contador_file  # Excluir 'contador.txt' da lista de arquivos
+    and f != contador_file  # Excluir 'visit_count.txt' da lista de arquivos
 ]
 if not files:
     st.write("Nenhum arquivo disponível para download.")
