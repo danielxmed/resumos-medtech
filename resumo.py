@@ -25,7 +25,7 @@ with st.sidebar:
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-4467862565929473"
-         data-ad-slot="SEU_AD_SLOT_ID"
+         data-ad-slot="7669894077"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
     <script>
