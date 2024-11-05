@@ -34,11 +34,12 @@ with st.sidebar:
     '''
     components.html(adsterra_code, height=610)  # Ajuste a altura para acomodar o banner
 
-# Função para atualizar o contador de acessos
+  # Função para atualizar o contador de acessos
 def update_counter():
+    contador_file = 'contador.txt'  # Nome do arquivo de contador
     if 'visit_count' not in st.session_state:
-        if os.path.exists('visit_count.txt'):
-            with open('visit_count.txt', 'r') as f:
+        if os.path.exists(contador_file):
+            with open(contador_file, 'r') as f:
                 try:
                     count = int(f.read())
                 except ValueError:
@@ -46,24 +47,26 @@ def update_counter():
         else:
             count = 0
         count += 1
-        with open('visit_count.txt', 'w') as f:
+        with open(contador_file, 'w') as f:
             f.write(str(count))
         st.session_state.visit_count = count
     return st.session_state.visit_count
-
 # Atualizar e exibir o contador
 visit_count = update_counter()
 st.sidebar.write(f"👁️ Número de acessos: {visit_count}")
 
 # Obtém a lista de arquivos no diretório atual
+contador_file = 'contador.txt'  # Nome do arquivo de contador para exclusão
+script_file = os.path.basename(__file__)  # Nome do próprio script
+
+# Obtém a lista de arquivos no diretório atual
 files = [
     f for f in os.listdir('.')
     if os.path.isfile(f)
-    and f != os.path.basename(__file__)
+    and f != script_file
     and not f.startswith('.')
-    and f != 'visit_count.txt'
+    and f != contador_file  # Excluir 'contador.txt' da lista de arquivos
 ]
-
 if not files:
     st.write("Nenhum arquivo disponível para download.")
 else:
