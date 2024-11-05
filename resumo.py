@@ -54,19 +54,21 @@ with st.sidebar:
     visit_count = update_counter()
     st.sidebar.write(f"👁️ Número de acessos: {visit_count}")
 
-
-# Obtém a lista de arquivos no diretório atual
+# Definir lista de arquivos a serem excluídos
 contador_file = 'contador.txt'  # Nome do arquivo de contador para exclusão
 script_file = os.path.basename(__file__)  # Nome do próprio script
 
+excluded_files = [script_file, contador_file]
+
+# Se houver outros arquivos para excluir, adicione-os à lista
+# excluded_files.append('visit_count.txt')
+
+# Obtém a lista de arquivos no diretório atual, excluindo os indesejados
 files = [
     f for f in os.listdir('.')
     if os.path.isfile(f)
-    and f != script_file
+    and f not in excluded_files
     and not f.startswith('.')
-    and f != contador_file  # Excluir 'contador.txt' da lista de arquivos
-    # Remova a linha abaixo se não houver 'visit_count.txt'
-    # and f != 'visit_count.txt'  # Excluir 'visit_count.txt' da lista de arquivos
 ]
 
 if not files:
