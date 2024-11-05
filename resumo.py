@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-import streamlit.components.v1 as components
 
 # Configuração da página
 st.set_page_config(
@@ -13,26 +12,6 @@ st.set_page_config(
 # Título e descrição do aplicativo
 st.title("📝 Resumos Nobrega Medtech")
 st.write("Bem-vindo ao aplicativo de resumos médicos. Aqui você pode baixar resumos de diversos temas médicos.")
-
-# Inserir Google Ads na barra lateral
-with st.sidebar:
-    st.header("Publicidade")
-    ad_code = """
-    <!-- Código do Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4467862565929473"
-     crossorigin="anonymous"></script>
-    <!-- Bloco de anúncio -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-4467862565929473"
-         data-ad-slot="7669894077"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    """
-    components.html(ad_code, height=300)
 
 # Função para atualizar o contador de acessos
 def update_counter():
