@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 import os
 import streamlit.components.v1 as components
@@ -34,7 +32,7 @@ with st.sidebar:
     '''
     components.html(adsterra_code, height=610)  # Ajuste a altura para acomodar o banner
 
-  # Função para atualizar o contador de acessos
+# Função para atualizar o contador de acessos
 def update_counter():
     contador_file = 'contador.txt'  # Nome do arquivo de contador
     if 'visit_count' not in st.session_state:
@@ -51,6 +49,7 @@ def update_counter():
             f.write(str(count))
         st.session_state.visit_count = count
     return st.session_state.visit_count
+
 # Atualizar e exibir o contador
 visit_count = update_counter()
 st.sidebar.write(f"👁️ Número de acessos: {visit_count}")
@@ -68,6 +67,7 @@ files = [
     and f != contador_file  # Excluir 'contador.txt' da lista de arquivos
     and f != contador_file  # Excluir 'visit_count.txt' da lista de arquivos
 ]
+
 if not files:
     st.write("Nenhum arquivo disponível para download.")
 else:
