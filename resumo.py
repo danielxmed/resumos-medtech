@@ -54,11 +54,6 @@ with st.sidebar:
     visit_count = update_counter()
     st.sidebar.write(f"👁️ Número de acessos: {visit_count}")
 
-    # Seção de Doações (Opcional)
-    st.sidebar.header("Apoie o Projeto!")
-    donation_link = "https://www.paypal.com/donate/?hosted_button_id=SUA_CHAVE_UNICA"
-    if st.sidebar.button("❤️ Fazer uma Doação"):
-        st.sidebar.markdown(f"[Clique aqui para doar]({donation_link})")
 
 # Obtém a lista de arquivos no diretório atual
 contador_file = 'contador.txt'  # Nome do arquivo de contador para exclusão
