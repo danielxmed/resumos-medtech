@@ -1,21 +1,6 @@
 import streamlit as st
 import os
-
-# Função para ler o contador de acessos
-def read_counter():
-    if os.path.exists('contador.txt'):
-        with open('contador.txt', 'r') as f:
-            count = int(f.read())
-    else:
-        count = 0
-    return count
-
-# Função para incrementar o contador de acessos
-def increment_counter():
-    count = read_counter() + 1
-    with open('contador.txt', 'w') as f:
-        f.write(str(count))
-    return count
+import streamlit.components.v1 as components
 
 # Configuração da página
 st.set_page_config(
@@ -25,18 +10,50 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Incrementa o contador de acessos
-access_count = increment_counter()
-
 # Título e descrição do aplicativo
 st.title("📝 Resumos Nobrega Medtech")
-st.write(f"Bem-vindo ao aplicativo de resumos médicos. Esta página foi acessada **{access_count}** vezes.")
+st.write("Bem-vindo ao aplicativo de resumos médicos. Aqui você pode baixar resumos de diversos temas médicos.")
 
-# Obtém a lista de arquivos no diretório atual, excluindo o próprio script e arquivos ocultos
-files = [f for f in os.listdir('.') if os.path.isfile(f)
-         and f != os.path.basename(__file__)
-         and not f.startswith('.')
-         and f != 'contador.txt']
+# Inserir Google Ads na barra lateral
+with st.sidebar:
+    st.header("Publicidade")
+    ad_code = """
+    <!-- Código do Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4467862565929473"
+     crossorigin="anonymous"></script>
+    <!-- Bloco de anúncio -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4467862565929473"
+         data-ad-slot="SEU_AD_SLOT_ID"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    """
+    components.html(ad_code, height=300)
+
+# Função para atualizar o contador de acessos
+def update_counter():
+    if 'visit_count' not in st.session_state:
+        if os.path.exists('visit_count.txt'):
+            with open('visit_count.txt', 'r') as f:
+                count = int(f.read())
+        else:
+            count = 0
+        count += 1
+        with open('visit_count.txt', 'w') as f:
+            f.write(str(count))
+        st.session_state.visit_count = count
+    return st.session_state.visit_count
+
+# Atualizar e exibir o contador
+visit_count = update_counter()
+st.sidebar.write(f"👁️ Número de acessos: {visit_count}")
+
+# Obtém a lista de arquivos no diretório atual
+files = [f for f in os.listdir('.') if os.path.isfile(f) and f != os.path.basename(__file__) and not f.startswith('.') and f != 'visit_count.txt']
 
 if not files:
     st.write("Nenhum arquivo disponível para download.")
