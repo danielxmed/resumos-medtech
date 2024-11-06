@@ -1,37 +1,33 @@
 import streamlit as st
 import os
-import streamlit.components.v1 as components
 
 # Configuração da página
 st.set_page_config(
     page_title="Resumos Nobrega Medtech",
-    page_icon="📝",
+    page_icon="🛒",
     layout="centered",
     initial_sidebar_state="expanded",
 )
 
 # Título e descrição do aplicativo
-st.title("📝 Resumos Nobrega Medtech")
+st.title("🛒 Resumos Nobrega Medtech")
 st.write("Bem-vindo ao aplicativo de resumos médicos. Aqui você pode baixar resumos de diversos temas médicos.")
 
-# Inserir o link de afiliado da Amazon na barra lateral
+# Inserir banners de produtos na barra lateral
 with st.sidebar:
-    st.header("Publicidade")
-    amazon_affiliate_link = "https://www.amazon.com.br?&linkCode=ll2&tag=99014451-20&linkId=0990949aebff31b1838d3b03c331432d&language=pt_BR&ref_=as_li_ss_tl"
-
-    # Exibir o link como um botão estilizado
+    st.header("Publicidade - Produtos Amazon")
+    
+    # Banner do produto com link de afiliado
     st.markdown(
-        f"""
-        <a href="{amazon_affiliate_link}" target="_blank">
-            <button style="background-color:orange;color:white;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;">
-                🛒 Ver Ofertas da Amazon
-            </button>
+        """
+        <a href="https://www.amazon.com.br?&linkCode=ll2&tag=99014451-20&linkId=ccd472bd1bab09517db7ce24f826b722&language=pt_BR&ref_=as_li_ss_tl" target="_blank">
+            <img src="https://m.media-amazon.com/images/I/41NsOExj+QL._SY445_SX342_.jpg" alt="Produto Amazon" style="width:100%;border-radius:10px;">
         </a>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
 
-    # Função para atualizar o contador de acessos
+    # Contador de acessos
     def update_counter():
         contador_file = 'contador.txt'  # Nome do arquivo de contador
         if 'visit_count' not in st.session_state:
@@ -53,14 +49,11 @@ with st.sidebar:
     visit_count = update_counter()
     st.sidebar.write(f"👁️ Número de acessos: {visit_count}")
 
-# Definir lista de arquivos a serem excluídos
-contador_file = 'contador.txt'  # Nome do arquivo de contador para exclusão
+# Lista de arquivos disponíveis
+contador_file = 'contador.txt'  # Nome do arquivo de contador
 script_file = os.path.basename(__file__)  # Nome do próprio script
 
 excluded_files = [script_file, contador_file]
-
-# Se houver outros arquivos para excluir, adicione-os à lista
-# excluded_files.append('visit_count.txt')
 
 # Obtém a lista de arquivos no diretório atual, excluindo os indesejados
 files = [
