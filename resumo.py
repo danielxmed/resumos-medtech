@@ -14,23 +14,22 @@ st.set_page_config(
 st.title("📝 Resumos Nobrega Medtech")
 st.write("Bem-vindo ao aplicativo de resumos médicos. Aqui você pode baixar resumos de diversos temas médicos.")
 
-# Inserir anúncio da Adsterra na barra lateral
+# Inserir o link de afiliado da Amazon na barra lateral
 with st.sidebar:
     st.header("Publicidade")
-    adsterra_code = '''
-    <!-- Adsterra Banner 160x600 -->
-    <script type="text/javascript">
-        atOptions = {
-            'key' : 'a38db12a3bc2ac843a8079836202ff03',
-            'format' : 'iframe',
-            'height' : 600,
-            'width' : 160,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/a38db12a3bc2ac843a8079836202ff03/invoke.js"></script>
-    '''
-    components.html(adsterra_code, height=610)  # Ajuste a altura para acomodar o banner
+    amazon_affiliate_link = "https://www.amazon.com.br?&linkCode=ll2&tag=99014451-20&linkId=ccd472bd1bab09517db7ce24f826b722&language=pt_BR&ref_=as_li_ss_tl"
+
+    # Exibir o link como um botão estilizado
+    st.markdown(
+        f"""
+        <a href="{amazon_affiliate_link}" target="_blank">
+            <button style="background-color:orange;color:white;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;">
+                🛒 Ver Ofertas da Amazon
+            </button>
+        </a>
+        """,
+        unsafe_allow_html=True
+    )
 
     # Função para atualizar o contador de acessos
     def update_counter():
@@ -86,4 +85,3 @@ else:
                 mime='application/octet-stream'
             )
             st.write("---")
-
