@@ -17,7 +17,7 @@ st.write("Bem-vindo ao aplicativo de resumos médicos. Aqui você pode baixar re
 # Inserir o link de afiliado da Amazon na barra lateral
 with st.sidebar:
     st.header("Publicidade")
-    amazon_affiliate_link = "https://www.amazon.com.br/Medicina-Interna-Harrison-2-Volumes/dp/6558040204?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3KBDGC4YMFQEL&dib=eyJ2IjoiMSJ9.O-Q3-uIuKhMxniINP_--HKvpt5S1oa-r-uEvR9nqupLJqMBD2kLvatFnbTn4Byr3693QBxoYyU-oHd4C37sCT4j01FRNKr5yRoNNofm5zK2s5XwW6oFQMnObUBON89y_YmcY_-DZcPPTKk3OWnMFWblcaSMAWDe6VzjL13BuDuTk_outvgshregcRmWuBs_vSRg2G1dH9GwceBx1jN1s6zt0ZSYLvHhutpDl7f11t-T8bjy7UtmaMILwdE5nCuQjxbBUkwSdOx0PaKQ7VI_atkYllqjNCL-jCT4EDhAg5sM.gD1Q6lYRv_zlVzAk8cy6RFjeGSUsXSPec-Q4DngjcCY&dib_tag=se&keywords=harrison&psr=EY17&qid=1730893767&s=black-friday&sprefix=harriso%2Cblack-friday%2C256&sr=1-1&linkCode=ll1&tag=99014451-20&linkId=ad250a38e00a3ba95fd182cc72b6e9d2&language=pt_BR&ref_=as_li_ss_tl"
+    amazon_affiliate_link = "https://www.amazon.com.br?&linkCode=ll2&tag=99014451-20&linkId=0990949aebff31b1838d3b03c331432d&language=pt_BR&ref_=as_li_ss_tl"
 
     # Exibir o link como um botão estilizado
     st.markdown(
