@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import streamlit.components.v1 as components
 
 # Configuração da página
 st.set_page_config(
@@ -13,19 +14,25 @@ st.set_page_config(
 st.title("🛒 Resumos Nobrega Medtech")
 st.write("Bem-vindo ao aplicativo de resumos médicos. Aqui você pode baixar resumos de diversos temas médicos.")
 
-# Inserir banners de produtos na barra lateral
+# Inserir Adsterra na barra lateral
 with st.sidebar:
-    st.header("Publicidade - Produtos Amazon")
+    st.header("Publicidade")
     
-    # Banner do produto com link de afiliado
-    st.markdown(
-        """
-        <a href="https://www.amazon.com.br?&linkCode=ll2&tag=99014451-20&linkId=ccd472bd1bab09517db7ce24f826b722&language=pt_BR&ref_=as_li_ss_tl" target="_blank">
-            <img src="https://m.media-amazon.com/images/I/41NsOExj+QL._SY445_SX342_.jpg" alt="Produto Amazon" style="width:100%;border-radius:10px;">
-        </a>
-        """,
-        unsafe_allow_html=True,
-    )
+    # Código do Adsterra
+    adsterra_code = """
+    <script type="text/javascript">
+        atOptions = {
+            'key' : 'a38db12a3bc2ac843a8079836202ff03',
+            'format' : 'iframe',
+            'height' : 600,
+            'width' : 160,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/a38db12a3bc2ac843a8079836202ff03/invoke.js"></script>
+    """
+    # Exibe o banner da Adsterra
+    components.html(adsterra_code, height=610)
 
     # Contador de acessos
     def update_counter():
